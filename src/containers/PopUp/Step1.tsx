@@ -1,25 +1,47 @@
 import React from "react";
-import { ContentWrapper } from "./styles";
+import { ContentWrapper, RatingContainer, RatingBox } from "./styles";
 
 interface Props {
-  value: string;
-  onChange: (value: string) => void;
+  value: number;
+  onChange: (value: number) => void;
   onNext: () => void;
 }
 
-const Step1: React.FC<Props> = ({ value, onChange, onNext }) => {
-  const handleInputChange = (e: any) => {
-    onChange(e.target.value);
+const MAX_COUNT = 10;
+
+const Step1: React.FC<Props> = ({ onChange, onNext }) => {
+  const rating = Array(MAX_COUNT)
+    .fill(0)
+    .map((item, index) => index + 1);
+
+  const handleSelect = (item: number) => {
+    onChange(item);
+    onNext();
   };
 
   return (
-    <ContentWrapper>
-      <input
-        placeholder="Leave a comment"
-        value={value}
-        onChange={handleInputChange}
-      />
-      <button onClick={onNext}>Go next</button>
+    <ContentWrapper
+      style={{
+        height: 331,
+      }}
+    >
+      <h3>Оцените продукт по 10-балльной шкале</h3>
+      <p>
+        Какова вероятность, что вы порекомендуете сервис друзьям, коллегам,
+        партнерам?
+      </p>
+      <RatingContainer>
+        {rating.map((item, index) => {
+          return (
+            <RatingBox
+              key={index.toString()}
+              onClick={() => handleSelect(item)}
+            >
+              {item}
+            </RatingBox>
+          );
+        })}
+      </RatingContainer>
     </ContentWrapper>
   );
 };

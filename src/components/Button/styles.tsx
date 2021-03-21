@@ -16,4 +16,10 @@ export const StyledButton = styled.button`
   color: #fff;
 
   display: block;
+
+  cursor: pointer;
+
+  :hover {
+    opacity: 0.9;
+  }
 `;

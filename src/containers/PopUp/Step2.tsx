@@ -1,5 +1,5 @@
 import React from "react";
-import { InputContainer } from "./styles";
+import { InputContainer, ContentWrapper } from "./styles";
 
 interface Props {
   value: string;
@@ -13,14 +13,16 @@ const Step2: React.FC<Props> = ({ value, onChange, onNext }) => {
   };
 
   return (
-    <InputContainer>
-      <input
-        placeholder="Leave a comment"
-        value={value}
-        onChange={handleInputChange}
-      />
-      <button onClick={onNext}>Go next</button>
-    </InputContainer>
+    <ContentWrapper>
+      <InputContainer>
+        <input
+          placeholder="Leave a comment"
+          value={value}
+          onChange={handleInputChange}
+        />
+        <button onClick={onNext}>Go next</button>
+      </InputContainer>
+    </ContentWrapper>
   );
 };
 

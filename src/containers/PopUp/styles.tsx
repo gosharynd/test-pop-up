@@ -55,6 +55,8 @@ export const ContentWrapper = styled.div`
   background-color: #fff;
 
   padding: 20px 24px 32px;
+
+  text-align: start;
 `;
 
 export const ImageContainer = styled.div`
@@ -82,6 +84,47 @@ export const Image = styled.img`
 
 export const TextContainer = styled.div`
   margin-top: 184px;
+`;
 
-  text-align: start;
+export const RatingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 24px -4px 0;
+
+  div {
+    border: 1px solid #c9c9c9;
+    background: #fafafa;
+  }
+
+  div:hover,
+  div:hover ~ div {
+    border: 1px solid #c9c9c9;
+    background: #fafafa;
+  }
+
+  :hover div {
+    background: #fffbef;
+    border: 0.5px solid #ffa037;
+  }
+`;
+
+export const RatingBox = styled.div`
+  width: 32px;
+  height: 32px;
+
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin: 0 4px;
+
+  font-family: Rubik;
+  font-size: 18px;
+  line-height: 21px;
+  color: #565656;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
 `;
