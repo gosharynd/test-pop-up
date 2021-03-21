@@ -7,7 +7,7 @@ interface Props {
   onNext: () => void;
 }
 
-const Step1: React.FC<Props> = ({ value, onChange, onNext }) => {
+const Step2: React.FC<Props> = ({ value, onChange, onNext }) => {
   const handleInputChange = (e: any) => {
     onChange(e.target.value);
   };
@@ -24,4 +24,4 @@ const Step1: React.FC<Props> = ({ value, onChange, onNext }) => {
   );
 };
 
-export default Step1;
+export default Step2;

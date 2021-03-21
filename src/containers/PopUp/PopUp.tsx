@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
 const PopUp: React.FC = () => {
   const [step, setStep] = React.useState<number | null>(0);
   const handleClosePopUp = () => {
-    setStep(0);
+    setStep(null);
   };
 
   // React.useEffect(() => {
@@ -34,40 +34,28 @@ const PopUp: React.FC = () => {
   });
 
   const handlePressNextStep = () => {
-    // if (step >= steps.length - 1) {
-    //   formik.submitForm();
-    // } else {
-    //   setStep((prev) => prev + 1);
-    // }
+    if (step === steps.length - 1) {
+      formik.submitForm();
+    } else {
+      setStep((prev) => (prev !== null ? prev + 1 : 0));
+    }
   };
 
   const steps = [
-    {
-      component: (
-        <Step0
-          value={formik.values.rating}
-          onChange={(value) => formik.setFieldValue("rating", value)}
-          onNext={handlePressNextStep}
-        />
-      ),
-    },
-    {
-      component: (
-        <Step1
-          value={formik.values.comment}
-          onChange={(value) => formik.setFieldValue("comment", value)}
-          onNext={handlePressNextStep}
-        />
-      ),
-    },
+    <Step0 onNext={handlePressNextStep} />,
+    <Step1
+      value={formik.values.comment}
+      onChange={(value) => formik.setFieldValue("comment", value)}
+      onNext={handlePressNextStep}
+    />,
   ];
 
   if (step === null) return null;
 
   return (
     <S.Container>
-      {/* <S.CloseButton onClick={handleClosePopUp}>Close</S.CloseButton> */}
-      {steps[step].component}
+      <S.CloseButton onClick={handleClosePopUp} src="/assets/close-line.png" />
+      {steps[step]}
     </S.Container>
   );
 };

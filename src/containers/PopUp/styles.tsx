@@ -29,11 +29,15 @@ export const Container = styled.div`
   }
 `;
 
-export const CloseButton = styled.p`
+export const CloseButton = styled.img`
   cursor: pointer;
+
   position: absolute;
-  top: 10px;
+  width: 24px;
+  height: 24px;
   right: 10px;
+  top: 8px;
+  z-index: 999;
 `;
 
 export const StepContainer = styled.div`

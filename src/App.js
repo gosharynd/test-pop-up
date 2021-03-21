@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { PopUp } from "./components";
+import { PopUp } from "./containers";
 
 function App() {
   return (

@@ -1,17 +1,12 @@
 import React from "react";
 import { Image, ImageContainer, ContentWrapper, TextContainer } from "./styles";
-import Button from "../Button";
+import { Button } from "../../components";
 
 interface Props {
-  value: number;
-  onChange: (value: number) => void;
   onNext: () => void;
 }
 
-// const MIN_VALUE = 1;
-// const MAX_VALUE = 10;
-
-const Step0: React.FC<Props> = ({ value, onChange, onNext }) => {
+const Step0: React.FC<Props> = ({ onNext }) => {
   return (
     <ContentWrapper>
       <ImageContainer>
