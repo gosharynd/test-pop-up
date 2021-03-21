@@ -1,8 +1,8 @@
 import React from "react";
 import * as Yup from "yup";
 import * as S from "./styles";
+import Step0 from "./Step0";
 import Step1 from "./Step1";
-import Step2 from "./Step2";
 import { useFormik } from "formik";
 
 const validationSchema = Yup.object().shape({
@@ -11,16 +11,16 @@ const validationSchema = Yup.object().shape({
 });
 
 const PopUp: React.FC = () => {
-  const [step, setStep] = React.useState(0);
+  const [step, setStep] = React.useState<number | null>(0);
   const handleClosePopUp = () => {
     setStep(0);
   };
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setStep(1);
-    }, 10000);
-  }, []);
+  // React.useEffect(() => {
+  //   setTimeout(() => {
+  //     setStep(1);
+  //   }, 10000);
+  // }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -34,20 +34,17 @@ const PopUp: React.FC = () => {
   });
 
   const handlePressNextStep = () => {
-    if (step >= steps.length - 1) {
-      formik.submitForm();
-    } else {
-      setStep((prev) => prev + 1);
-    }
+    // if (step >= steps.length - 1) {
+    //   formik.submitForm();
+    // } else {
+    //   setStep((prev) => prev + 1);
+    // }
   };
 
   const steps = [
     {
-      component: <></>,
-    },
-    {
       component: (
-        <Step1
+        <Step0
           value={formik.values.rating}
           onChange={(value) => formik.setFieldValue("rating", value)}
           onNext={handlePressNextStep}
@@ -56,7 +53,7 @@ const PopUp: React.FC = () => {
     },
     {
       component: (
-        <Step2
+        <Step1
           value={formik.values.comment}
           onChange={(value) => formik.setFieldValue("comment", value)}
           onNext={handlePressNextStep}
@@ -65,14 +62,12 @@ const PopUp: React.FC = () => {
     },
   ];
 
-  if (step === 0) return null;
+  if (step === null) return null;
 
   return (
     <S.Container>
-      <S.Header>
-        <S.CloseButton onClick={handleClosePopUp}>Close</S.CloseButton>
-      </S.Header>
-      <S.StepContainer>{steps[step].component}</S.StepContainer>
+      {/* <S.CloseButton onClick={handleClosePopUp}>Close</S.CloseButton> */}
+      {steps[step].component}
     </S.Container>
   );
 };
