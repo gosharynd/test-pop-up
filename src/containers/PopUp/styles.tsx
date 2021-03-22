@@ -27,6 +27,10 @@ export const Container = styled.div`
   h3 + p {
     margin-top: 12px;
   }
+
+  p + textarea {
+    margin-top: 6px;
+  }
 `;
 
 export const CloseButton = styled.img`
@@ -48,7 +52,16 @@ export const StepContainer = styled.div`
   border-bottom-right-radius: 8px;
 `;
 
-export const InputContainer = styled.div``;
+export const InputContainer = styled.div`
+  margin-top: 16px;
+
+  textarea {
+    resize: none;
+    width: calc(100% - 46px);
+    min-height: 140px;
+    padding: 8px 12px;
+  }
+`;
 
 export const ContentWrapper = styled.div`
   border-radius: 8px;

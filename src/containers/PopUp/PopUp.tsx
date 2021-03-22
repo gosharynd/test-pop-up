@@ -4,6 +4,8 @@ import * as S from "./styles";
 import Step0 from "./Step0";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
+import Step3 from "./Step3";
+
 import { useFormik } from "formik";
 
 const validationSchema = Yup.object().shape({
@@ -12,7 +14,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const PopUp: React.FC = () => {
-  const [step, setStep] = React.useState<number | null>(1);
+  const [step, setStep] = React.useState<number | null>(2);
   const handleClosePopUp = () => {
     setStep(null);
   };
@@ -35,10 +37,9 @@ const PopUp: React.FC = () => {
   });
 
   const handlePressNextStep = () => {
-    if (step === steps.length - 1) {
+    setStep((prev) => (prev !== null ? prev + 1 : 0));
+    if (step === steps.length - 2) {
       formik.submitForm();
-    } else {
-      setStep((prev) => (prev !== null ? prev + 1 : 0));
     }
   };
 
@@ -54,6 +55,7 @@ const PopUp: React.FC = () => {
       onChange={(value) => formik.setFieldValue("comment", value)}
       onNext={handlePressNextStep}
     />,
+    <Step3 />,
   ];
 
   if (step === null) return null;

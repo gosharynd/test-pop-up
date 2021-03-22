@@ -10,6 +10,7 @@ interface Props {
 const MAX_COUNT = 10;
 
 const Step1: React.FC<Props> = ({ onChange, onNext }) => {
+  // TODO fix with https://medium.com/free-code-camp/how-to-make-the-impossible-possible-in-css-with-a-little-creativity-bd96bb42b29d
   const rating = Array(MAX_COUNT)
     .fill(0)
     .map((item, index) => index + 1);
