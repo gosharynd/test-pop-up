@@ -14,16 +14,16 @@ const validationSchema = Yup.object().shape({
 });
 
 const PopUp: React.FC = () => {
-  const [step, setStep] = React.useState<number | null>(2);
+  const [step, setStep] = React.useState<number | null>(null);
   const handleClosePopUp = () => {
     setStep(null);
   };
 
-  // React.useEffect(() => {
-  //   setTimeout(() => {
-  //     setStep(1);
-  //   }, 10000);
-  // }, []);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setStep(0);
+    }, 10000);
+  }, []);
 
   const formik = useFormik({
     initialValues: {
